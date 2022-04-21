@@ -42,8 +42,8 @@ blip = nil
 -- Send the player pos to the server side script every 5 secs
 Citizen.CreateThread(function() 
 	while true do
-		-- Wait 5 secs
-		Wait(5000)
+		-- Wait .5 secs just for testing
+		Wait(500)
 
 		-- Get player pos
 		local playerPed = PlayerPedId() -- get the local player ped
@@ -60,28 +60,30 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z)
 	RemoveBlip(blip)
 
 	local playerPos = GetEntityCoords(PlayerPedId())
-	local targetPos = vector3(x, y, z)
+	local targetPos = vector3(-1147.27, 1000.00, 203.92)
 
 	local distance = #(playerPos - targetPos)
 
 	print(distance)
 
-	blip = AddBlipForCoord(x, y, z)
-	SetBlipScale(blip, 0.9)
-	SetBlipSprite(blip, 364)
-	SetBlipColour(blip, 0)
-	SetBlipAlpha(blip, 255)
-	
-	-- test this
-	AddTextEntry("PLAYER", "Player Name")
-	BeginTextCommandSetBlipName("PLAYER")
-	SetBlipCategory(blip, 2)
-	EndTextCommandSetBlipName(blip)
-	--[[ then try this
-	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString("Player Name")
-	EndTextCommandSetBlipName(blip)
-	]]
+	if distance > 30 then
+		blip = AddBlipForCoord(x, y, z)
+		SetBlipScale(blip, 0.9)
+		SetBlipSprite(blip, 364)
+		SetBlipColour(blip, 0)
+		SetBlipAlpha(blip, 255)
+		
+		-- test this
+		AddTextEntry("PLAYER", "Player Name")
+		BeginTextCommandSetBlipName("PLAYER")
+		SetBlipCategory(blip, 2)
+		EndTextCommandSetBlipName(blip)
+		--[[ then try this
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString("Player Name")
+		EndTextCommandSetBlipName(blip)
+		]]
 
-	print("Blip ID: " .. blip)
+		print("Blip ID: " .. blip)
+	end
 end)
