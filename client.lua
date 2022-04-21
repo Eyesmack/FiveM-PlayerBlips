@@ -47,8 +47,8 @@ Citizen.CreateThread(function()
 		local pos = GetEntityCoords(playerPed) -- get the pos of the local player ped
 
 		-- Trigger the server event playerPos
+		print("Triggering Server Event: PlayerBlips:playerPos")
 		TriggerServerEvent("PlayerBlips:playerPos", pos.x, pos.y, pos.z)
-		print("Triggered Server Event: PlayerBlips:playerPos")
 	end
 end)
 
