@@ -36,6 +36,9 @@ Citizen.CreateThread(function()
 end)
 ]]
 
+-- Set the blip to a global variable
+blip = nil
+
 -- Send the player pos to the server side script every 5 secs
 Citizen.CreateThread(function() 
 	while true do
