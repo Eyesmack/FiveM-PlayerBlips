@@ -57,6 +57,8 @@ end)
 
 -- Get the player positions and update the map with the new coords
 RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z)
+	RemoveBlip(blip)
+
 	blip = AddBlipForCoord(x, y, z)
 	SetBlipScale(blip, 0.9)
 	SetBlipSprite(blip, 364)
