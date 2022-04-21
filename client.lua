@@ -59,6 +59,13 @@ end)
 RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z)
 	RemoveBlip(blip)
 
+	local playerPos = GetEntityCoords(PlayerPedId())
+	local targetPos = vector3(x, y, z)
+
+	local distance = #(playerPos - targetPos)
+
+	print(distance)
+
 	blip = AddBlipForCoord(x, y, z)
 	SetBlipScale(blip, 0.9)
 	SetBlipSprite(blip, 364)
