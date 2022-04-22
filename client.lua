@@ -60,8 +60,8 @@ end)
 
 -- Get the player positions and update the map with the new coords
 RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
-	if blip[name] then
-		RemoveBlip(blip[name])
+	if blips[name] then
+		RemoveBlip(blips[name])
 	end
 
 	local playerPos = GetEntityCoords(PlayerPedId())
@@ -73,23 +73,24 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 
 	if distance > 30 then
 		if name == playerName then return end
-		blip = AddBlipForCoord(x, y, z)
-		SetBlipScale(blip, 0.9)
-		SetBlipSprite(blip, 364)
-		SetBlipColour(blip, 0)
-		SetBlipAlpha(blip, 255)
+		newBlip = AddBlipForCoord(x, y, z)
+		SetBlipScale(newBlip, 0.9)
+		SetBlipSprite(newBlip, 364)
+		SetBlipColour(newBlip, 0)
+		SetBlipAlpha(newBlip, 255)
 		
 		-- test this
 		AddTextEntry("PLAYER", "Player Name")
 		BeginTextCommandSetBlipName("PLAYER")
-		SetBlipCategory(blip, 2)
-		EndTextCommandSetBlipName(blip)
+		SetBlipCategory(newBlip, 2)
+		EndTextCommandSetBlipName(newBlip)
 		--[[ then try this
 		BeginTextCommandSetBlipName("STRING")
 		AddTextComponentString("Player Name")
 		EndTextCommandSetBlipName(blip)
 		]]
 
-		print("Blip ID: " .. blip)
+		print("Blip ID: " .. newBlip)
+		blips[player] = newBlip
 	end
 end)
