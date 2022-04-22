@@ -64,15 +64,14 @@ Citizen.CreateThread(function()
 
 			-- Trigger the server event playerPos
 			--print("Triggering Server Event: PlayerBlips:playerPos")
-			TriggerServerEvent("PlayerBlips:playerPos", pos.x, pos.y, pos.z, playerName, playerID)
+			TriggerServerEvent("PlayerBlips:playerPos", pos.x, pos.y, pos.z, playerName)
 		--end
 	end
 end)
 
 -- Get the player positions and update the map with the new coords
-RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
-	if (name == playerName) then 
-		--print(name .. " " .. playerName)
+RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name)
+	if (name == playerName) then
 		return 
 	end
 
@@ -84,31 +83,12 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 	end
 
 	local distance = #(playerPos - targetPos)
-
-	--print(distance)
 	
 	if distance > 1000 then
-		--newBlip = AddBlipForCoord(x, y, z)
 		newBlip = AddBlipForRadius(x, y, z, 100.0)
-		--SetBlipScale(newBlip, 0.9)
-		--SetBlipSprite(newBlip, 10--[[radius_outline]] --[[364, ceo_blip]])
 		SetBlipColour(newBlip, 1)
 		SetBlipAlpha(newBlip, 128)
-		
-		-- test this
-		--[[
-		AddTextEntry("PLAYER", name)
-		BeginTextCommandSetBlipName("PLAYER")
-		SetBlipCategory(newBlip, 7)
-		EndTextCommandSetBlipName(newBlip)
-		]]
-		--[[ then try this
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString("Player Name")
-		EndTextCommandSetBlipName(blip)
-		]]
 
-		--print("Blip ID: " .. newBlip)
 		blips[name] = newBlip
 	else
 		if blips[name] then
