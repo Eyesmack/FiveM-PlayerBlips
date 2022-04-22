@@ -9,6 +9,13 @@ crim = true
 blipC = 1
 blipA = 128
 
+RegisterCommand("test", function(source, args)
+	print(GetEntityCoords(playerID))
+	print(GetEntityHeading(playerID))
+end)
+
+
+
 RegisterCommand("crim", function(source, args)
 	crim = true
 	blipC = 1
