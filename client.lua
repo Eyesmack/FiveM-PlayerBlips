@@ -52,7 +52,17 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, bType)
 	
 	-- if the distance is more than 1000 units continue
 	if distance > 1000 then
-		if bType == 0 then
+		if bType == 1 then
+			newBlip = AddBlipForCoord(x, y, z)
+			SetBlipScale(newBlip, 0.9)
+			SetBlipSprite(newBlip, 58)
+			SetBlipColour(newBlip, 3)
+			SetBlipAlpha(newBlip, 255)
+			AddTextEntry("PLAYER", name)
+			BeginTextCommandSetBlipName("PLAYER")
+			SetBlipCategory(newBlip, 7)
+			EndTextCommandSetBlipName(newBlip)
+		else
 			-- calculate three random numbers between -150 and 150
 			local randomNumberX = math.random(-150, 150)
 			local randomNumberY = math.random(-150, 150)
@@ -64,16 +74,6 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, bType)
 			SetBlipColour(newBlip, 1)
 			-- set the blips alpha
 			SetBlipAlpha(newBlip, 128)
-		elseif bType == 1 then
-			newBlip = AddBlipForCoord(x, y, z)
-			SetBlipScale(newBlip, 0.9)
-			SetBlipSprite(newBlip, 58)
-			SetBlipColour(newBlip, 3)
-			SetBlipAlpha(newBlip, 255)
-			AddTextEntry("PLAYER", name)
-			BeginTextCommandSetBlipName("PLAYER")
-			SetBlipCategory(newBlip, 7)
-			EndTextCommandSetBlipName(newBlip)
 		end
 		-- add the blip to the blips array
 		blips[name] = newBlip
