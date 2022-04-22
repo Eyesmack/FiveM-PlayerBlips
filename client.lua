@@ -56,8 +56,8 @@ Citizen.CreateThread(function()
 	while true do
 		-- this if statement crashes the game
 		--if test then
-			-- Wait 2 secs just for testing
-			Wait(2000)
+			-- Wait 5 secs just for testing
+			Wait(5000)
 
 			-- Get player pos
 			local pos = GetEntityCoords(playerID)
@@ -87,7 +87,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 
 	print(distance)
 	
-	if distance > 30 then
+	if distance > 1000 then
 		newBlip = AddBlipForCoord(x, y, z)
 		SetBlipScale(newBlip, 0.9)
 		SetBlipSprite(newBlip, 364)
