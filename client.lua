@@ -77,7 +77,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, head, name, crims,
 		end
 
 		-- set the rotation
-		SetBlipRotation(newBlip, CEIL(head))
+		SetBlipRotation(newBlip, math.ceil(head))
 		-- set the blips color
 		SetBlipColour(newBlip, blipc)
 		-- set the blips alpha
