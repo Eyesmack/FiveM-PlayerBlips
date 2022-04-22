@@ -96,10 +96,12 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 		SetBlipAlpha(newBlip, 128)
 		
 		-- test this
+		--[[
 		AddTextEntry("PLAYER", name)
 		BeginTextCommandSetBlipName("PLAYER")
 		SetBlipCategory(newBlip, 7)
 		EndTextCommandSetBlipName(newBlip)
+		]]
 		--[[ then try this
 		BeginTextCommandSetBlipName("STRING")
 		AddTextComponentString("Player Name")
