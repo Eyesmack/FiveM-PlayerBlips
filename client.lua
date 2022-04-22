@@ -39,7 +39,7 @@ end)
 -- Set the blip to a global variable
 blips = {}
 -- Get player ID
-playerID = PlayerPedId()
+playerID = PlayerId()
 -- Get player name
 playerName = GetPlayerName(PlayerId())
 
@@ -48,8 +48,6 @@ test = false
 RegisterCommand("test", function(source, args)
 	print(playerID)
 	print(playerName)
-	print(PlayerPedId())
-	print(GetPlayerName(PlayerPedId()))
 end)
 
 
