@@ -81,7 +81,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 	end
 
 	local playerPos = GetEntityCoords(PlayerPedId())
-	local targetPos = vector3(-1147.27, 1000.00, 203.92)
+	local targetPos = vector3(x, y, z)
 
 	local distance = #(playerPos - targetPos)
 
