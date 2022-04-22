@@ -63,7 +63,7 @@ Citizen.CreateThread(function()
 			local pos = GetEntityCoords(playerID)
 
 			-- Trigger the server event playerPos
-			print("Triggering Server Event: PlayerBlips:playerPos")
+			--print("Triggering Server Event: PlayerBlips:playerPos")
 			TriggerServerEvent("PlayerBlips:playerPos", pos.x, pos.y, pos.z, playerName, playerID)
 		--end
 	end
@@ -72,7 +72,7 @@ end)
 -- Get the player positions and update the map with the new coords
 RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 	if (name == playerName) then 
-		print(name .. " " .. playerName)
+		--print(name .. " " .. playerName)
 		return 
 	end
 
@@ -85,7 +85,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 
 	local distance = #(playerPos - targetPos)
 
-	print(distance)
+	--print(distance)
 	
 	if distance > 1000 then
 		newBlip = AddBlipForCoord(x, y, z)
@@ -105,7 +105,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 		EndTextCommandSetBlipName(blip)
 		]]
 
-		print("Blip ID: " .. newBlip)
+		--print("Blip ID: " .. newBlip)
 		blips[name] = newBlip
 	else
 		if blips[name] then
