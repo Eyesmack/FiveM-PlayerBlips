@@ -43,9 +43,20 @@ playerID = PlayerPedId()
 -- Get player name
 playerName = GetPlayerName(playerID)
 
+test = false
+
+RegisterCommand("test", function(source, args)
+	if test == false then
+		test = true
+	elseif test == true then
+		test = false
+	end
+end)
+
+
 -- Send the player pos to the server side script every 5 secs
 Citizen.CreateThread(function() 
-	while true do
+	while test do
 		-- Wait 1 secs just for testing
 		Wait(1000)
 
