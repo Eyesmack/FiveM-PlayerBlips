@@ -37,7 +37,7 @@ Citizen.CreateThread(function()
 		Wait(10000)
 
 		-- Get player pos
-		local pos = GetEntityCoords(playerID)
+		local pos = GetEntityCoords(GetPlayerPed(-1))
 		local head = GetEntityHeading(playerID)
 
 		-- Trigger the server event playerPos
