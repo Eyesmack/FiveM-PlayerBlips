@@ -28,9 +28,7 @@ end)
 
 RegisterCommand("radius", function(source, args)
 	local arg = args[1] or 200
-	if strmatch(arg, "^%-?[%d%.]+%d$") then 
-		TriggerServerEvent("PlayerBlips:updateRadius", arg)
-	end
+	TriggerServerEvent("PlayerBlips:updateRadius", arg)
 end)
 
 RegisterNetEvent("PlayerBlips:updateRadius", function(arg)
@@ -39,9 +37,7 @@ end)
 
 RegisterCommand("interval", function(source, args)
 	local arg = args[1] or 10
-	if strmatch(arg, "^%-?[%d%.]+%d$") then 
-		TriggerServerEvent("PlayerBlips:updateInterval", arg)
-	end
+	TriggerServerEvent("PlayerBlips:updateInterval", arg)
 end)
 
 RegisterNetEvent("PlayerBlips:updateInterval", function(arg)
