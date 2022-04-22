@@ -53,23 +53,9 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, bType)
 	-- if the distance is more than 1000 units continue
 	if distance > 1000 then
 		if bType == 1 then
-			newBlip = AddBlipForCoord(x, y, z)
-			SetBlipScale(newBlip, 0.9)
-			SetBlipSprite(newBlip, 58)
-			SetBlipColour(newBlip, 3)
-			SetBlipCategory(newBlip, 0)
+			cop()
 		else
-			-- calculate three random numbers between -150 and 150
-			local randomNumberX = math.random(-150, 150)
-			local randomNumberY = math.random(-150, 150)
-			local randomNumberZ = math.random(-150, 150)
-			
-			-- create the blip and add the random numbers to the coords of the player with radius 200(must have .0 on the end)
-			newBlip = AddBlipForRadius(x+randomNumberX, y+randomNumberY, z+randomNumberZ, 200.0)
-			-- set the blips color
-			SetBlipColour(newBlip, 1)
-			-- set the blips alpha
-			SetBlipAlpha(newBlip, 128)
+			crim()
 		end
 		-- add the blip to the blips array
 		blips[name] = newBlip
@@ -80,3 +66,29 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, bType)
 		end
 	end
 end)
+
+
+function cop()
+	newBlip = AddBlipForCoord(x, y, z)
+	SetBlipScale(newBlip, 0.9)
+	SetBlipSprite(newBlip, 58)
+	SetBlipColour(newBlip, 3)
+	SetBlipCategory(newBlip, 1)
+	AddTextEntry("PLAYER", name)
+	BeginTextCommandSetBlipName("PLAYER")
+	EndTextCommandSetBlipName(newBlip)
+end
+
+function crim()
+	-- calculate three random numbers between -150 and 150
+	local randomNumberX = math.random(-150, 150)
+	local randomNumberY = math.random(-150, 150)
+	local randomNumberZ = math.random(-150, 150)
+
+	-- create the blip and add the random numbers to the coords of the player with radius 200(must have .0 on the end)
+	newBlip = AddBlipForRadius(x+randomNumberX, y+randomNumberY, z+randomNumberZ, 200.0)
+	-- set the blips color
+	SetBlipColour(newBlip, 1)
+	-- set the blips alpha
+	SetBlipAlpha(newBlip, 128)
+end
