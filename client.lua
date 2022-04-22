@@ -4,6 +4,16 @@ blips = {}
 playerID = PlayerPedId()
 -- Get player name
 playerName = GetPlayerName(PlayerId())
+-- set the blip type to default criminal
+blipType = 0
+
+RegisterCommand("crim", function(source, args)
+	blipType = 0
+end)
+
+RegisterCommand("cop", function(source, args)
+	blipType = 1
+end)
 
 -- Send the player pos to the server side script every 5 secs
 Citizen.CreateThread(function() 
@@ -16,12 +26,12 @@ Citizen.CreateThread(function()
 
 		-- Trigger the server event playerPos
 		--print("Triggering Server Event: PlayerBlips:playerPos")
-		TriggerServerEvent("PlayerBlips:playerPos", pos.x, pos.y, pos.z, playerName)
+		TriggerServerEvent("PlayerBlips:playerPos", pos.x, pos.y, pos.z, playerName, blipType)
 	end
 end)
 
 -- Get the player positions and update the map with the new coords
-RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name)
+RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, bType)
 	-- if the name of the incoming coords is the same as our local player ignore the coords
 	if (name == playerName) then
 		return 
@@ -42,18 +52,29 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name)
 	
 	-- if the distance is more than 1000 units continue
 	if distance > 1000 then
-		-- calculate three random numbers between -150 and 150
-		local randomNumberX = math.random(-150, 150)
-		local randomNumberY = math.random(-150, 150)
-		local randomNumberZ = math.random(-150, 150)
-		
-		-- create the blip and add the random numbers to the coords of the player with radius 200(must have .0 on the end)
-		newBlip = AddBlipForRadius(x+randomNumberX, y+randomNumberY, z+randomNumberZ, 200.0)
-		-- set the blips color
-		SetBlipColour(newBlip, 1)
-		-- set the blips alpha
-		SetBlipAlpha(newBlip, 128)
-
+		if bType == 0 then
+			-- calculate three random numbers between -150 and 150
+			local randomNumberX = math.random(-150, 150)
+			local randomNumberY = math.random(-150, 150)
+			local randomNumberZ = math.random(-150, 150)
+			
+			-- create the blip and add the random numbers to the coords of the player with radius 200(must have .0 on the end)
+			newBlip = AddBlipForRadius(x+randomNumberX, y+randomNumberY, z+randomNumberZ, 200.0)
+			-- set the blips color
+			SetBlipColour(newBlip, 1)
+			-- set the blips alpha
+			SetBlipAlpha(newBlip, 128)
+		elseif bType == 1 then
+			newBlip = AddBlipForCoord(x, y, z)
+			SetBlipScale(newBlip, 0.9)
+			SetBlipSprite(newBlip, 364)
+			SetBlipColour(newBlip, 1)
+			SetBlipAlpha(newBlip, 255)
+			AddTextEntry("PLAYER", name)
+			BeginTextCommandSetBlipName("PLAYER")
+			SetBlipCategory(newBlip, 7)
+			EndTextCommandSetBlipName(newBlip)
+		end
 		-- add the blip to the blips array
 		blips[name] = newBlip
 	else
