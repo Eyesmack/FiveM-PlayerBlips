@@ -57,11 +57,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, bType)
 			SetBlipScale(newBlip, 0.9)
 			SetBlipSprite(newBlip, 58)
 			SetBlipColour(newBlip, 3)
-			SetBlipAlpha(newBlip, 255)
-			AddTextEntry("PLAYER", name)
-			BeginTextCommandSetBlipName("PLAYER")
-			SetBlipCategory(newBlip, 7)
-			EndTextCommandSetBlipName(newBlip)
+			SetBlipCategory(newBlip, 0)
 		else
 			-- calculate three random numbers between -150 and 150
 			local randomNumberX = math.random(-150, 150)
