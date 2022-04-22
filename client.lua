@@ -85,9 +85,9 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name)
 	local distance = #(playerPos - targetPos)
 	
 	if distance > 1000 then
-		local randomNumberX = math.random(1, 50)
-		local randomNumberY = math.random(1, 50)
-		local randomNumberZ = math.random(1, 50)
+		local randomNumberX = math.random(-50, 50)
+		local randomNumberY = math.random(-50, 50)
+		local randomNumberZ = math.random(-50, 50)
 		
 		newBlip = AddBlipForRadius(x+randomNumberX, y+randomNumberY, z+randomNumberZ, 200.0)
 		SetBlipColour(newBlip, 1)
