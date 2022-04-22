@@ -39,7 +39,7 @@ end)
 -- Set the blip to a global variable
 blips = {}
 -- Get player ID
-playerID = PlayerId()
+playerID = PlayerPedId()
 -- Get player name
 playerName = GetPlayerName(PlayerId())
 
