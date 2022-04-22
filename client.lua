@@ -48,15 +48,17 @@ test = false
 RegisterCommand("test", function(source, args)
 	if test == false then
 		test = true
+		print("Changed to true")
 	elseif test == true then
 		test = false
+		print("Changed to false")
 	end
 end)
 
 
 -- Send the player pos to the server side script every 5 secs
 Citizen.CreateThread(function() 
-	while test do
+	while test == true do
 		-- Wait 1 secs just for testing
 		Wait(1000)
 
