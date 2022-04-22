@@ -10,6 +10,8 @@ blipC = 1
 blipA = 128
 
 RegisterCommand("test", function(source, args)
+	print(GetEntityCoords(GetPlayerPed(-1))
+	print(" ")
 	print(GetEntityCoords(playerID))
 	print(GetEntityHeading(playerID))
 end)
