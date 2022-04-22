@@ -89,8 +89,8 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 	
 	if distance > 1000 then
 		newBlip = AddBlipForCoord(x, y, z)
-		SetBlipScale(newBlip, 0.9)
-		SetBlipSprite(newBlip, 364)
+		SetBlipScale(newBlip, 10)
+		SetBlipSprite(newBlip, 10--[[radius_outline]] --[[364, ceo_blip]])
 		SetBlipColour(newBlip, 0)
 		SetBlipAlpha(newBlip, 255)
 		
