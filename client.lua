@@ -70,7 +70,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 	print(distance)
 
 	if distance > 30 then
-		if name == playerName then break end
+		if name == playerName then return end
 		blip = AddBlipForCoord(x, y, z)
 		SetBlipScale(blip, 0.9)
 		SetBlipSprite(blip, 364)
