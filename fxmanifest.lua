@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'Isaac'
 description 'A Simple Player Blips Script'
-version '0.2.4.9'
+version '0.2.4.10'
 
 client_script 'client.lua'
 server_script 'server.lua'
