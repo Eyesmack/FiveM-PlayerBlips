@@ -11,7 +11,7 @@ blipA = 128
 -- set the radius of the crim blip
 rad = 200
 -- set the random dir modifier
-rand = rad - 10
+rand = rad - 50
 -- set the interval between coord checks
 i = 10
 
