@@ -8,14 +8,10 @@ playerName = GetPlayerName(PlayerId())
 crim = true
 blipC = 1
 blipA = 128
-
-RegisterCommand("test", function(source, args)
-	print(GetEntityCoords(GetPlayerPed(-1)))
-	print(" ")
-	print(GetEntityCoords(playerID))
-	print(GetEntityHeading(playerID))
-end)
-
+-- set the radius of the crim blip
+rad = 200
+-- set the interval between coord checks
+i = 10
 
 
 RegisterCommand("crim", function(source, args)
@@ -30,11 +26,33 @@ RegisterCommand("cop", function(source, args)
 	blipA = 255
 end)
 
+RegisterCommand("radius", function(source, args)
+	local arg = args[1] or 200
+	if strmatch(arg, "^%-?[%d%.]+%d$") then 
+		TriggerServerEvent("PlayerBlips:updateRadius", arg)
+	end
+end)
+
+RegisterNetEvent("PlayerBlips:updateRadius", function(arg)
+	rad = arg
+end)
+
+RegisterCommand("interval", function(source, args)
+	local arg = args[1] or 10
+	if strmatch(arg, "^%-?[%d%.]+%d$") then 
+		TriggerServerEvent("PlayerBlips:updateInterval", arg)
+	end
+end)
+
+RegisterNetEvent("PlayerBlips:updateInterval", function(arg)
+	i = arg
+end)
+
 -- Send the player pos to the server side script every 5 secs
 Citizen.CreateThread(function() 
 	while true do
 		-- Wait 10 secs just for testing
-		Wait(10000)
+		Wait(i*1000)
 
 		-- Get player pos
 		local pos = GetEntityCoords(GetPlayerPed(-1))
@@ -74,8 +92,8 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, head, name, crims,
 		local randomNumberZ = math.random(-150, 150)
 
 		if crims then
-			-- create the blip and add the random numbers to the coords of the player with radius 200(must have .0 on the end)
-			newBlip = AddBlipForRadius(x+randomNumberX, y+randomNumberY, z+randomNumberZ, 200.0)
+			-- create the blip and add the random numbers to the coords of the player with radius var = rad
+			newBlip = AddBlipForRadius(x+randomNumberX, y+randomNumberY, z+randomNumberZ, rad..".0")
 		else
 			newBlip = AddBlipForCoord(x, y, z)
 			SetBlipScale(newBlip, 0.9)

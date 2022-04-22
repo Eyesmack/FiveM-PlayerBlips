@@ -3,3 +3,11 @@ RegisterServerEvent("PlayerBlips:playerPos", function(x, y, z, head, name, crim,
     -- The second argument of TRIGGER_CLIENT_EVENT (the -1), means that everyone on the server will take the new coords
     TriggerClientEvent("PlayerBlips:updateBlips", -1, x, y, z, head, name, crim, blipC, blipA)
 end)
+
+RegisterServerEvent("PlayerBlips:updateRadius", function(arg)
+    TriggerClientEvent("PlayerBlips:updateRadius", -1, arg)
+end)
+
+RegisterServerEvent("PlayerBlips:updateInterval", function(arg)
+    TriggerClientEvent("PlayerBlips:updateInterval", -1, arg)
+end)
