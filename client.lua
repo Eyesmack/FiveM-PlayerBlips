@@ -10,6 +10,8 @@ blipC = 1
 blipA = 128
 -- set the radius of the crim blip
 rad = 200
+-- set the random dir modifier
+rand = rad - 10
 -- set the interval between coord checks
 i = 10
 
@@ -82,10 +84,10 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, head, name, crims,
 	
 	-- if the distance is more than 1000 units continue
 	if distance > 1000 then
-		-- calculate three random numbers between -150 and 150
-		local randomNumberX = math.random(-150, 150)
-		local randomNumberY = math.random(-150, 150)
-		local randomNumberZ = math.random(-150, 150)
+		-- calculate three random numbers between -rand and rand
+		local randomNumberX = math.random(-rand, rand)
+		local randomNumberY = math.random(-rand, rand)
+		local randomNumberZ = math.random(-rand, rand)
 
 		if crims then
 			-- create the blip and add the random numbers to the coords of the player with radius var = rad
