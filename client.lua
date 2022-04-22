@@ -41,7 +41,7 @@ blips = {}
 -- Get player ID
 playerID = PlayerPedId()
 -- Get player name
-playerName = GetPlayerName(playerID)
+playerName = GetPlayerName(PlayerId())
 
 test = false
 
