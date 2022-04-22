@@ -46,8 +46,8 @@ playerName = GetPlayerName(playerID)
 -- Send the player pos to the server side script every 5 secs
 Citizen.CreateThread(function() 
 	while true do
-		-- Wait .5 secs just for testing
-		Wait(500)
+		-- Wait 1 secs just for testing
+		Wait(1000)
 
 		-- Get player pos
 		local pos = GetEntityCoords(playerID)
