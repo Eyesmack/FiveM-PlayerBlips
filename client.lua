@@ -70,7 +70,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, head, name, crims,
 		else
 			newBlip = AddBlipForCoord(x, y, z)
 			SetBlipScale(newBlip, 0.9)
-			SetBlipSprite(newBlip, 0)
+			SetBlipSprite(newBlip, 6)
 			AddTextEntry("PLAYER", name)
 			BeginTextCommandSetBlipName("PLAYER")
 			EndTextCommandSetBlipName(newBlip)
