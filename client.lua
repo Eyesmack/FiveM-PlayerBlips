@@ -53,9 +53,9 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, bType)
 	-- if the distance is more than 1000 units continue
 	if distance > 1000 then
 		if bType == 1 then
-			blips[name] = cop()
+			blips[name] = cop(x, y, z, name)
 		else
-			blips[name] = crim()
+			blips[name] = crim(x, y, z, name)
 		end
 		-- add the blip to the blips array
 		--blips[name] = newBlip
