@@ -107,6 +107,6 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 		]]
 
 		print("Blip ID: " .. newBlip)
-		blips[player] = newBlip
+		blips[name] = newBlip
 	end
 end)
