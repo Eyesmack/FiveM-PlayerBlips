@@ -8,6 +8,10 @@ RegisterServerEvent("PlayerBlips:updateRadius", function(arg)
     TriggerClientEvent("PlayerBlips:updateRadius", -1, arg)
 end)
 
+RegisterServerEvent("PlayerBlips:updateRadDir", function(arg)
+    TriggerClientEvent("PlayerBlips:updateRadDir", -1, arg)
+end)
+
 RegisterServerEvent("PlayerBlips:updateInterval", function(arg)
     TriggerClientEvent("PlayerBlips:updateInterval", -1, arg)
 end)

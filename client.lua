@@ -11,7 +11,7 @@ blipA = 128
 -- set the radius of the crim blip
 rad = 200
 -- set the random dir modifier
-rand = rad - 50
+rand = 150
 -- set the interval between coord checks
 i = 10
 
@@ -35,6 +35,15 @@ end)
 
 RegisterNetEvent("PlayerBlips:updateRadius", function(arg)
 	rad = arg
+end)
+
+RegisterCommand("raddir", function(source, args)
+	local arg = args[1] or 150
+	TriggerServerEvent("PlayerBlips:updateRadDir", arg)
+end)
+
+RegisterNetEvent("PlayerBlips:updateRadDir", function(arg)
+	rand = arg
 end)
 
 RegisterCommand("interval", function(source, args)
