@@ -75,17 +75,18 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 		print(name .. " " .. playerName)
 		return 
 	end
+	
 	local playerPos = GetEntityCoords(PlayerPedId())
 	local targetPos = vector3(x, y, z)
-
-	local distance = #(playerPos - targetPos)
-
-	print(distance)
-
 
 	if blips[name] then
 		RemoveBlip(blips[name])
 	end
+
+	local distance = #(playerPos - targetPos)
+
+	print(distance)
+	
 	if distance > 30 then
 		newBlip = AddBlipForCoord(x, y, z)
 		SetBlipScale(newBlip, 0.9)
