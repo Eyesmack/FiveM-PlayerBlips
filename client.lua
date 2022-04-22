@@ -76,7 +76,7 @@ end)
 
 -- Get the player positions and update the map with the new coords
 RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
-	if (id == playerID) then return end
+	if (name == playerName) then return end
 	local playerPos = GetEntityCoords(PlayerPedId())
 	local targetPos = vector3(x, y, z)
 
