@@ -76,6 +76,7 @@ end)
 
 -- Get the player positions and update the map with the new coords
 RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
+	if (id == playerID) then return end
 	local playerPos = GetEntityCoords(PlayerPedId())
 	local targetPos = vector3(x, y, z)
 
@@ -84,7 +85,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 	print(distance)
 
 	if distance > 30 then
-		--if (id == playerID) then return end
+		
 		if blips[name] then
 			RemoveBlip(blips[name])
 		end
