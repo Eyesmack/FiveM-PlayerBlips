@@ -88,11 +88,12 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 	--print(distance)
 	
 	if distance > 1000 then
-		newBlip = AddBlipForCoord(x, y, z)
-		SetBlipScale(newBlip, 0.9)
-		SetBlipSprite(newBlip, 364--[[radius_outline]] --[[364, ceo_blip]])
-		SetBlipColour(newBlip, 0)
-		SetBlipAlpha(newBlip, 255)
+		--newBlip = AddBlipForCoord(x, y, z)
+		newBlip = AddBlipForRadius(x, y, z, 100.0)
+		--SetBlipScale(newBlip, 0.9)
+		--SetBlipSprite(newBlip, 10--[[radius_outline]] --[[364, ceo_blip]])
+		SetBlipColour(newBlip, 1)
+		SetBlipAlpha(newBlip, 128)
 		
 		-- test this
 		AddTextEntry("PLAYER", name)
