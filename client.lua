@@ -93,7 +93,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, head, name, crims,
 
 		if crims then
 			-- create the blip and add the random numbers to the coords of the player with radius var = rad
-			newBlip = AddBlipForRadius(x+randomNumberX, y+randomNumberY, z+randomNumberZ, rad..".0")
+			newBlip = AddBlipForRadius(x+randomNumberX, y+randomNumberY, z+randomNumberZ, tonumber(rad..".0"))
 		else
 			newBlip = AddBlipForCoord(x, y, z)
 			SetBlipScale(newBlip, 0.9)
