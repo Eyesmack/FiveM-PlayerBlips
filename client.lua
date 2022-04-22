@@ -1,7 +1,7 @@
 -- Set the blips to a global array
 blips = {}
 -- Get player ID
-playerID = PlayerPedId()
+playerID = GetPlayerPed(-1)
 -- Get player name
 playerName = GetPlayerName(PlayerId())
 -- set the blip type to default crim
