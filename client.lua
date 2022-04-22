@@ -84,7 +84,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 	print(distance)
 
 	if distance > 30 then
-		if (id == playerID) then return end
+		--if (id == playerID) then return end
 		if blips[name] then
 			RemoveBlip(blips[name])
 		end
