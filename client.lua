@@ -46,13 +46,10 @@ playerName = GetPlayerName(playerID)
 test = false
 
 RegisterCommand("test", function(source, args)
-	if test == false then
-		test = true
-		print("Changed to true")
-	elseif test == true then
-		test = false
-		print("Changed to false")
-	end
+	print(playerID)
+	print(playerName)
+	print(PlayerPedId())
+	print(GetPlayerName(PlayerPedId()))
 end)
 
 
