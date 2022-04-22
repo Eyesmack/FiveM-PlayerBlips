@@ -82,11 +82,11 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 
 	print(distance)
 
+
+	if blips[name] then
+		RemoveBlip(blips[name])
+	end
 	if distance > 30 then
-		
-		if blips[name] then
-			RemoveBlip(blips[name])
-		end
 		newBlip = AddBlipForCoord(x, y, z)
 		SetBlipScale(newBlip, 0.9)
 		SetBlipSprite(newBlip, 364)
