@@ -75,7 +75,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 		print(name .. " " .. playerName)
 		return 
 	end
-	
+
 	local playerPos = GetEntityCoords(PlayerPedId())
 	local targetPos = vector3(x, y, z)
 
@@ -95,9 +95,9 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, id)
 		SetBlipAlpha(newBlip, 255)
 		
 		-- test this
-		AddTextEntry("PLAYER", "Player Name")
+		AddTextEntry("PLAYER", name)
 		BeginTextCommandSetBlipName("PLAYER")
-		SetBlipCategory(newBlip, 2)
+		SetBlipCategory(newBlip, 7)
 		EndTextCommandSetBlipName(newBlip)
 		--[[ then try this
 		BeginTextCommandSetBlipName("STRING")
