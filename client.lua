@@ -58,16 +58,18 @@ end)
 
 -- Send the player pos to the server side script every 5 secs
 Citizen.CreateThread(function() 
-	while test == true do
-		-- Wait 1 secs just for testing
-		Wait(1000)
+	while true do
+		if test then
+			-- Wait 1 secs just for testing
+			Wait(1000)
 
-		-- Get player pos
-		local pos = GetEntityCoords(playerID)
+			-- Get player pos
+			local pos = GetEntityCoords(playerID)
 
-		-- Trigger the server event playerPos
-		print("Triggering Server Event: PlayerBlips:playerPos")
-		TriggerServerEvent("PlayerBlips:playerPos", pos.x, pos.y, pos.z, playerName, playerID)
+			-- Trigger the server event playerPos
+			print("Triggering Server Event: PlayerBlips:playerPos")
+			TriggerServerEvent("PlayerBlips:playerPos", pos.x, pos.y, pos.z, playerName, playerID)
+		end
 	end
 end)
 
