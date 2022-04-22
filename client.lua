@@ -18,8 +18,8 @@ end)
 -- Send the player pos to the server side script every 5 secs
 Citizen.CreateThread(function() 
 	while true do
-		-- Wait 5 secs just for testing
-		Wait(5000)
+		-- Wait 10 secs just for testing
+		Wait(10000)
 
 		-- Get player pos
 		local pos = GetEntityCoords(playerID)
@@ -53,12 +53,12 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, bType)
 	-- if the distance is more than 1000 units continue
 	if distance > 1000 then
 		if bType == 1 then
-			cop()
+			blips[name] = cop()
 		else
-			crim()
+			blips[name] = crim()
 		end
 		-- add the blip to the blips array
-		blips[name] = newBlip
+		--blips[name] = newBlip
 	else
 		-- if the player is less than 1000 units away remove the blip
 		if blips[name] then
@@ -68,7 +68,7 @@ RegisterNetEvent("PlayerBlips:updateBlips", function(x, y, z, name, bType)
 end)
 
 
-function cop()
+function cop(x, y, z, name)
 	newBlip = AddBlipForCoord(x, y, z)
 	SetBlipScale(newBlip, 0.9)
 	SetBlipSprite(newBlip, 58)
@@ -77,9 +77,11 @@ function cop()
 	AddTextEntry("PLAYER", name)
 	BeginTextCommandSetBlipName("PLAYER")
 	EndTextCommandSetBlipName(newBlip)
+
+	return newBlip
 end
 
-function crim()
+function crim(x, y, z, name)
 	-- calculate three random numbers between -150 and 150
 	local randomNumberX = math.random(-150, 150)
 	local randomNumberY = math.random(-150, 150)
@@ -91,4 +93,6 @@ function crim()
 	SetBlipColour(newBlip, 1)
 	-- set the blips alpha
 	SetBlipAlpha(newBlip, 128)
+
+	return newBlip
 end
